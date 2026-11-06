@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Reddit">
+  <path d="M132 64l12-40 39 9" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="194" cy="36" r="22" fill="#fff"/>
+  <circle cx="194" cy="36" r="10" fill="#000"/>
+
+  <circle cx="35" cy="132" r="31" fill="#fff"/>
+  <circle cx="35" cy="132" r="16" fill="#000"/>
+  <circle cx="221" cy="132" r="31" fill="#fff"/>
+  <circle cx="221" cy="132" r="16" fill="#000"/>
+
+  <ellipse cx="128" cy="151" rx="105" ry="76" fill="#fff"/>
+  <circle cx="88" cy="143" r="14" fill="#000"/>
+  <circle cx="168" cy="143" r="14" fill="#000"/>
+  <path d="M85 181c25 21 61 21 86 0" fill="none" stroke="#000" stroke-width="12" stroke-linecap="round"/>
+</svg>
