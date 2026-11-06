@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nothing special</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      user-select: none;
+    }
+
+    .title {
+      font-size: clamp(2.4rem, 7vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      white-space: nowrap;
+      color: #fff;
+    }
+
+    /* CA */
+    .ca-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .ca {
+      font-family: 'Courier New', monospace;
+      font-size: clamp(0.6rem, 1.8vw, 0.78rem);
+      color: #444;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .ca-wrap:hover .ca {
+      color: #666;
+    }
+
+    .copy-icon {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .ca-wrap:hover .copy-icon {
+      opacity: 1;
+    }
+
+    .copied-msg {
+      font-family: 'Courier New', monospace;
+      font-size: 0.65rem;
+      color: #555;
+      letter-spacing: 0.1em;
+      height: 14px;
+      transition: opacity 0.3s;
+      opacity: 0;
+    }
+
+    .copied-msg.show {
+      opacity: 1;
+    }
+
+    /* Social icons */
+    .icons {
+      display: flex;
+      gap: 28px;
+      margin-top: 4px;
+    }
+
+    .icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      opacity: 0.3;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .icon-btn:hover {
+      opacity: 0.75;
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+    <div class="title">nothing special</div>
+
+    <div class="ca-wrap" id="caWrap" title="click to copy">
+      <span class="ca" id="caText">0x0000000000000000000000000000000000000000</span>
+      <!-- copy icon -->
+      <svg class="copy-icon" width="12" height="12" viewBox="0 0 16 16" fill="#444" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="#444" stroke-width="1.5" fill="none"/>
+        <path d="M3 11H2a1 1 0 01-1-1V2a1 1 0 011-1h8a1 1 0 011 1v1" stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="copied-msg" id="copiedMsg">copied</div>
+
+    <div class="icons">
+      <!-- Telegram -->
+      <a class="icon-btn" href="#" id="tgLink" title="Telegram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.17 13.967l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.978.592z"/>
+        </svg>
+      </a>
+
+      <!-- DexScreener -->
+      <a class="icon-btn" href="#" id="dexLink" title="DexScreener" target="_blank" rel="noopener">
+        <svg viewBox="0 0 252 300" xmlns="http://www.w3.org/2000/svg">
+          <path d="M126 0 L252 72 L252 228 L126 300 L0 228 L0 72 Z" fill="none" stroke="currentColor" stroke-width="22"/>
+          <path d="M80 110 L126 86 L172 110 L172 190 L126 214 L80 190 Z"/>
+          <path d="M126 86 L126 50 M172 110 L202 92 M172 190 L202 208 M126 214 L126 250 M80 190 L50 208 M80 110 L50 92" stroke="currentColor" stroke-width="18" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const CA = '0x0000000000000000000000000000000000000000';
+
+    document.getElementById('caWrap').addEventListener('click', () => {
+      navigator.clipboard.writeText(CA).then(() => {
+        const msg = document.getElementById('copiedMsg');
+        msg.classList.add('show');
+        setTimeout(() => msg.classList.remove('show'), 1500);
+      });
+    });
+  </script>
+</body>
+</html>
